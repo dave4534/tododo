@@ -3,16 +3,22 @@
 <head>
   <title></title>
   <link rel="stylesheet" type="text/css" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body ng-app="besttodo" ng-controller="controller">
 <div class="col-md-6">
-  <h1>Best ToDo</h1>
+  <h1>ToDoDo</h1>
 
 <div class="taskList" ng-repeat="task in tasks track by $index">{{task.input}}</div>
 
-<input ng-model="input" class="input-group form-control" placeholder="Type task">
+<form name="todoForm" ng-submit="todoForm.$valid">
+<p>Make sure to input between 5-15 characers</p>
+<input type="text" ng-model="input" ng-minlength="5" ng-maxlength="15" class="input-group form-control" placeholder="Type task" required>
 <button class="btn" ng-click="addTask()">Add Task</button>
 </div>
+</form>
+
+
 <script type="text/javascript" src="/node_modules/angular/angular.js"></script>
 <script type="text/javascript" src="app.js"></script>
 <script type="text/javascript" src="controllers/controller.js"></script>
